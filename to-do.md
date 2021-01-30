@@ -13,10 +13,11 @@ Database
 
 Components
 [ ] - App
-    [ ] - import Details
+    [x] - import Details
     [ ] - import MovieList
 [ ] - Details
     [ ] - show all genres of a given movie
+        [ ] - reducer for genres, map over
     [ ] - back to list button
 [ ] - AddMovie
     [ ] - an input field (for the movie title)

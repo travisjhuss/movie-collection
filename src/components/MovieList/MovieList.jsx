@@ -14,9 +14,10 @@ function MovieList() {
     }, []);
 
     // when image clicked
-    const handleClick = () => {
-        console.log('image clicked on ID:', movie.id);
-        dispatch({type: 'FETCH_DETAILS', payload: movie.id})
+    const handleClick = (id) => {
+        console.log('image clicked on ID:', id);
+        dispatch({type: 'FETCH_DETAILS', payload: id});
+        dispatch({type: 'FETCH_SELECTED_MOVIE_GENRES', payload: id});
         history.push('/details');
     } // end handleClick
 
@@ -28,7 +29,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={handleClick}/>
+                            <img src={movie.poster} alt={movie.title} onClick={() => {handleClick(movie.id)}}/>
                         </div>
                     );
                 })}

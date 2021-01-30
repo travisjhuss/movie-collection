@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
-    .then( result => {
+    .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
@@ -26,13 +26,13 @@ router.post('/', (req, res) => {
 
   // FIRST QUERY MAKES MOVIE
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
-  .then(result => {
-    console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
-    
-    const createdMovieId = result.rows[0].id
+    .then(result => {
+      console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
 
-    // Now handle the genre reference
-    const insertMovieGenreQuery = `
+      const createdMovieId = result.rows[0].id
+
+      // Now handle the genre reference
+      const insertMovieGenreQuery = `
       INSERT INTO "movies_genres" ("movies_id", "genres_id")
       VALUES  ($1, $2);
       `
@@ -46,26 +46,51 @@ router.post('/', (req, res) => {
         res.sendStatus(500)
       })
 
-// Catch for first query
-  }).catch(err => {
-    console.log(err);
-    res.sendStatus(500)
-  })
+      // Catch for first query
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500)
+    })
 })
 
 // GET details from selected movie
 router.get('/:id', (req, res) => {
   // Get id from req.params
   const id = req.params.id;
-  const sqlText = `SELECT * FROM students WHERE id = $1`;
+  console.log('get details for movie id:', id);
+  const sqlText = `
+                  SELECT "movies".id, "movies".title,"movies".description, "movies".poster FROM "movies"
+                  WHERE "movies".id = $1;
+                  `;
   pool.query(sqlText, [id])
-      .then((result) => {
-          res.send(result.rows);
-      })
-      .catch((error) => {
-          console.log(`Error making database query ${sqlText}`, error);
-          res.sendStatus(500);
-      });
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+// GET genres from selected movie
+router.get('/genres/:id', (req, res) => {
+  // Get id from req.params
+  const id = req.params.id;
+  console.log('get genres for movie id:', id);
+  const sqlText = `
+                  SELECT "genres".name AS "genre" FROM "movies"
+                  JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
+                  JOIN "genres" ON "movies_genres".genre_id = "genres".id
+                  WHERE "movies".id = $1;
+                  `;
+  pool.query(sqlText, [id])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
