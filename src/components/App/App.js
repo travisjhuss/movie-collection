@@ -52,7 +52,7 @@ function App() {
           open={open} 
           onClose={handleClose}
         >
-          <AddMovie />
+          <AddMovie handleClose={handleClose}/>
         </Dialog>
 
         {/* floating button to open AddMovie */}

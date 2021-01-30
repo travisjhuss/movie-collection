@@ -14,7 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import { useDispatch, useSelector } from 'react-redux';
 
-function AddMovie() {
+function AddMovie({handleClose}) {
 
     const dispatch = useDispatch();
 
@@ -25,10 +25,10 @@ function AddMovie() {
     // get genres from genre reducer
     const genres = useSelector(store => store.genres);
 
-    const [personName, setPersonName] = useState([]);
+    const [genreNames, setGenreNames] = useState([]);
 
     const handleChange = (event) => {
-        setPersonName(event.target.value);
+        setGenreNames(event.target.value);
     };
 
     const handleCancel = () => {
@@ -39,26 +39,13 @@ function AddMovie() {
         console.log('clicked add');
     }
 
-    const names = [
-        'Oliver Hansen',
-        'Van Henry',
-        'April Tucker',
-        'Ralph Hubbard',
-        'Omar Alexander',
-        'Carlos Abbott',
-        'Miriam Wagner',
-        'Bradley Wilkerson',
-        'Virginia Andrews',
-        'Kelly Snyder',
-    ];
-
     console.log('genres from DB:', genres);
+    console.log('genreNames:', genreNames);
     return (
         <>
             <DialogTitle>Add Movie...</DialogTitle>
             <DialogContent>
                 <TextField
-                    autoFocus
                     margin="dense"
                     id="title"
                     label="Movie Title"
@@ -67,7 +54,6 @@ function AddMovie() {
                 />
                 <br />
                 <TextField
-                    autoFocus
                     margin="dense"
                     id="poster-url"
                     label="Movie Poster URL"
@@ -76,7 +62,6 @@ function AddMovie() {
                 />
                 <br />
                 <TextField
-                    autoFocus
                     margin="dense"
                     id="description"
                     label="Description"
@@ -94,21 +79,21 @@ function AddMovie() {
                     id="genre-checkbox"
                     variant="outlined"
                     multiple
-                    value={personName}
+                    value={genreNames}
                     onChange={handleChange}
                     // input={<Input />}
                     renderValue={(selected) => selected.join(', ')}
                 >
                     {genres.map((genre) => (
                         <MenuItem key={genre.id} value={genre.name}>
-                            <Checkbox checked={personName.indexOf(genre.name) > -1} />
+                            <Checkbox checked={genreNames.indexOf(genre.name) > -1} />
                             <ListItemText primary={genre.name} />
                         </MenuItem>
                     ))}
                 </Select>
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleCancel} color="primary">
+            <Button onClick={handleClose} color="primary">
                     Cancel
             </Button>
             <Button onClick={handleAddMovie} color="primary">
