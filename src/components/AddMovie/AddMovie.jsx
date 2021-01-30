@@ -36,19 +36,18 @@ function AddMovie({handleClose}) {
 
     
     const handleAddMovie = () => {
-        console.log('clicked add');
         // loop over array of genre names and get IDs from genres
         const genreIds = [];
         for (let x = 0; x < genreNames.length; x++) {
             for (let i = 0; i <genres.length; i++) {
+                // push matching IDs into array
                 if (genreNames[x] === genres[i].name) {
                     genreIds.push(genres[i].id)
                 }
             }
         }
-        
         console.log('genreIds:', genreIds);
-
+        // package movie to post
         const movieToAdd = {
             title: movieTitle,
             poster: moviePoster,
@@ -56,7 +55,7 @@ function AddMovie({handleClose}) {
             genre_ids: genreIds
         }
         console.log('movieToAdd:', movieToAdd);
-        // dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
+        dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
     }
 
     console.log('genres from DB:', genres);
