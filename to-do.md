@@ -24,7 +24,7 @@ Components
     [x] - an input field (for the movie poster image URL)
     [x] - a textarea (for the movie description)
     [x] - a dropdown (for the genres)
-    [ ] - `Cancel` button, which should bring the user to the Home/List Page
+    [x] - `Cancel` button, which should bring the user to the Home/List Page
     [ ] - `Save` button, which should update the title and description in the database and bring the user to the Home/List Page 
           (which now has the new movie)
 
