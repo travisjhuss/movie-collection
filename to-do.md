@@ -7,8 +7,8 @@ To-do
 [x] - npm install material icons
 
 Database
-[ ] - Create a database named `saga_movies_weekend`
-[ ] - Run the queries from `/database/database.sql` 
+[x] - Create a database named `saga_movies_weekend`
+[x] - Run the queries from `/database/database.sql` 
 
 
 Components
