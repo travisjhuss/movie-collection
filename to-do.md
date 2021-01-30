@@ -16,8 +16,8 @@ Components
     [x] - import Details
     [ ] - import MovieList
 [ ] - Details
-    [ ] - show all genres of a given movie
-        [ ] - reducer for genres, map over
+    [x] - show all genres of a given movie
+        [x] - reducer for genres, map over
     [ ] - back to list button
 [ ] - AddMovie
     [ ] - an input field (for the movie title)
