@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route} from 'react-router-dom';
+import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList';
 import MovieDetail from '../MovieDetail/MovieDetail.jsx';
@@ -23,11 +23,11 @@ function App() {
       <AppBar>
         <h2>Travis's Movie DataBase!</h2>
       </AppBar>
-      <Router>        
+      <Router>
         <Route path="/" exact>
           <MovieList />
         </Route>
-        
+
         {/* Details page */}
         <Route path="/details" exact>
           <MovieDetail />
@@ -38,10 +38,13 @@ function App() {
           <AddMovie />
         </Route>
 
+        {/* floating button to open AddMovie */}
+        <Link to="/add">
+          <Fab color="primary" style={styleAddBtn} >
+            <AddIcon />
+          </Fab>
+        </Link>
       </Router>
-        <Fab color="primary" style={styleAddBtn}>
-          <AddIcon />
-        </Fab>
     </div>
   );
 }
