@@ -26,17 +26,37 @@ function AddMovie({handleClose}) {
     const genres = useSelector(store => store.genres);
 
     const [genreNames, setGenreNames] = useState([]);
+    const [movieTitle, setMovieTitle] = useState('');
+    const [movieDescription, setMovieDescription] = useState('');
+    const [moviePoster, setMoviePoster] = useState('');
 
     const handleChange = (event) => {
         setGenreNames(event.target.value);
     };
 
-    const handleCancel = () => {
-        console.log('clicked cancel');
-    }
-
+    
     const handleAddMovie = () => {
         console.log('clicked add');
+        // loop over array of genre names and get IDs from genres
+        const genreIds = [];
+        for (let x = 0; x < genreNames.length; x++) {
+            for (let i = 0; i <genres.length; i++) {
+                if (genreNames[x] === genres[i].name) {
+                    genreIds.push(genres[i].id)
+                }
+            }
+        }
+        
+        console.log('genreIds:', genreIds);
+
+        const movieToAdd = {
+            title: movieTitle,
+            poster: moviePoster,
+            description: movieDescription,
+            genre_ids: genreIds
+        }
+        console.log('movieToAdd:', movieToAdd);
+        // dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
     }
 
     console.log('genres from DB:', genres);
@@ -51,6 +71,7 @@ function AddMovie({handleClose}) {
                     label="Movie Title"
                     type="text"
                     variant="outlined"
+                    onChange={(event) => setMovieTitle(event.target.value)}
                 />
                 <br />
                 <TextField
@@ -59,6 +80,7 @@ function AddMovie({handleClose}) {
                     label="Movie Poster URL"
                     type="text"
                     variant="outlined"
+                    onChange={(event) => setMoviePoster(event.target.value)}
                 />
                 <br />
                 <TextField
@@ -70,9 +92,9 @@ function AddMovie({handleClose}) {
                     type="text"
                     fullWidth
                     variant="outlined"
+                    onChange={(event) => setMovieDescription(event.target.value)}
                 />
                 <br />
-
                 <InputLabel id="genre-checkbox-label">Genres</InputLabel>
                 <Select
                     labelId="genre-checkbox-label"
