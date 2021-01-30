@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Link} from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList';
 import MovieDetail from '../MovieDetail/MovieDetail.jsx';
@@ -6,6 +6,8 @@ import AddMovie from '../AddMovie/AddMovie';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import AppBar from '@material-ui/core/AppBar';
+import Dialog from '@material-ui/core/Dialog';
+import { useState } from 'react';
 
 function App() {
 
@@ -16,6 +18,16 @@ function App() {
     bottom: 20,
     left: 'auto',
     position: 'fixed',
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -33,17 +45,16 @@ function App() {
           <MovieDetail />
         </Route>
 
-        {/* Add Movie page */}
-        <Route path="/add" exact>
+        {/* Add Movie page in a popup */}
+        <Dialog open={open} onClose={handleClose}>
           <AddMovie />
-        </Route>
+        </Dialog>
 
         {/* floating button to open AddMovie */}
-        <Link to="/add">
-          <Fab color="primary" style={styleAddBtn} >
-            <AddIcon />
-          </Fab>
-        </Link>
+        <Fab color="primary" style={styleAddBtn} onClick={handleClickOpen}>
+          <AddIcon />
+        </Fab>
+
       </Router>
     </div>
   );
