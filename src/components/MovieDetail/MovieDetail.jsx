@@ -13,7 +13,7 @@ function MovieDetail() {
     // function to return to list component
     const backToList = () => {
         console.log('clicked back button');
-        history.push('/')
+        history.push('/');
     }
 
     console.log('details from DB:', details);

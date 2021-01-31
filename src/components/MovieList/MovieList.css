@@ -1,4 +1,37 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    margin-top: 85px;
+    justify-content: space-evenly;
+    background: rgb(19,40,43);
+    background: radial-gradient(circle, rgba(19,40,43,1) 53%, rgba(14,12,15,1) 100%);
 }
+
+#movie-paper {
+    margin: 10px 5px;
+    background-color: #ad4830;
+    transition: all .2s ease-in-out;
+}
+
+
+#movie-paper:hover { 
+    transform: scale(1.15); 
+}
+
+.hidden-title {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+#movie-paper:hover .hidden-title {
+    visibility: visible;
+  }
