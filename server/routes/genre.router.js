@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
-
+  // GET to populate genres in dropdown menu in AddMovie
   const query = `SELECT * FROM genres ORDER BY "name" ASC`;
   pool.query(query)
     .then(result => {

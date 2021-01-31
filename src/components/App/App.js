@@ -10,7 +10,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { useState } from 'react';
 
 function App() {
-
+  // style to position add button
   const styleAddBtn = {
     margin: 0,
     top: 'auto',
@@ -21,7 +21,7 @@ function App() {
     backgroundColor: '#ad4830',
     color: '#fff4dd'
   };
-
+  // for dialog box
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

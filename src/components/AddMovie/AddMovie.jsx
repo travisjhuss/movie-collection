@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './AddMovie.css';
 
 function AddMovie({ handleClose }) {
-
+    // Custom theme for form
     const theme = createMuiTheme({
         palette: {
             primary: {
@@ -24,13 +24,9 @@ function AddMovie({ handleClose }) {
             }
         }
     })
-
+    // style to change background color 
     const styleForm = {
         backgroundColor: '#a0432c',
-    }
-
-    const styleBorder = {
-        border: '#fff4dd'
     }
 
     const dispatch = useDispatch();
@@ -41,7 +37,7 @@ function AddMovie({ handleClose }) {
 
     // get genres from genre reducer
     const genres = useSelector(store => store.genres);
-
+    // states to store new movie data
     const [genreNames, setGenreNames] = useState([]);
     const [movieTitle, setMovieTitle] = useState('');
     const [movieDescription, setMovieDescription] = useState('');
@@ -50,7 +46,6 @@ function AddMovie({ handleClose }) {
     const handleChange = (event) => {
         setGenreNames(event.target.value);
     };
-
 
     const handleAddMovie = () => {
         // loop over array of genre names and get IDs from genres
@@ -63,7 +58,7 @@ function AddMovie({ handleClose }) {
                 }
             }
         }
-        console.log('genreIds:', genreIds);
+        // console.log('genreIds:', genreIds);
         // package movie to post
         const movieToAdd = {
             title: movieTitle,
@@ -71,14 +66,16 @@ function AddMovie({ handleClose }) {
             description: movieDescription,
             genre_ids: genreIds
         }
-        console.log('movieToAdd:', movieToAdd);
+        // console.log('movieToAdd:', movieToAdd);
         dispatch({ type: 'ADD_MOVIE', payload: movieToAdd });
+        // close dialog box
         handleClose();
+        // refresh MovieList
         dispatch({ type: 'FETCH_MOVIES' });
     }
 
-    console.log('genres from DB:', genres);
-    console.log('genreNames:', genreNames);
+    // console.log('genres from DB:', genres);
+    // console.log('genreNames:', genreNames);
     return (
         <div style={styleForm}>
             <ThemeProvider theme={theme}>
@@ -92,7 +89,6 @@ function AddMovie({ handleClose }) {
                         label="Movie Title"
                         type="text"
                         variant="outlined"
-                        style={styleBorder}
                         onChange={(event) => setMovieTitle(event.target.value)}
                     />
                     <br />
@@ -118,6 +114,7 @@ function AddMovie({ handleClose }) {
                     />
                     <br />
                     <InputLabel id="genre-checkbox-label">Genres</InputLabel>
+                    {/* Dropdown borrowed from Material UI's website */}
                     <Select
                         labelId="genre-checkbox-label"
                         id="genre-checkbox-input"

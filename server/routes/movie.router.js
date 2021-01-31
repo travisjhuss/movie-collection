@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
-
+  // GET for MovieList
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then(result => {
@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  // POST for AddMovie
   const newMovie = req.body.newMovie
   console.log('in router, newMovie:', newMovie);
   // RETURNING "id" will give us back the id of the created movie
@@ -31,8 +32,9 @@ router.post('/', (req, res) => {
       console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
 
       const createdMovieId = result.rows[0].id
+      // selected genres array from AddMovie
       const genresToAdd = req.body.newMovie.genre_ids;
-
+      // loop over genre array and concatenate a string to put in sql
       let values = '';
       for (let i = 2; i <= genresToAdd.length + 1; i++) {
           values += `($1, $${i}),`;

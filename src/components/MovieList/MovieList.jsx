@@ -17,9 +17,7 @@ function MovieList() {
 
     // when image clicked
     const handleClick = (id) => {
-        console.log('image clicked on ID:', id);
-        // dispatch({type: 'FETCH_DETAILS', payload: id});
-        // dispatch({type: 'FETCH_SELECTED_MOVIE_GENRES', payload: id});
+        // console.log('image clicked on ID:', id);
         history.push(`/details/${id}`);
     } // end handleClick
 

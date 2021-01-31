@@ -25,12 +25,12 @@ function MovieDetail() {
 
     // function to return to list component
     const backToList = () => {
-        console.log('clicked back button');
+        // console.log('clicked back button');
         history.push('/');
     }
 
-    console.log('details from DB:', details);
-    console.log('genres from DB:', genres);
+    // console.log('details from DB:', details);
+    // console.log('genres from DB:', genres);
     return (
         <Paper variant="outlined" id="details-container">
             <div id="poster">
