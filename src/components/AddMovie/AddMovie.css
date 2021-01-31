@@ -1,0 +1,10 @@
+#form-head {
+    font-family: 'Monoton', cursive;
+    color: #fff4dd;
+}
+
+#title-input, #poster-url-input, #description-input, #genre-checkbox-input, #checkbox {
+    color: #fff4dd;
+    font-family: 'Times New Roman', Times, serif;
+}
+

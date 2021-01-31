@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 .App {
   text-align: center;
 }
@@ -34,9 +36,42 @@
 
 #add-btn {
   transition: all .2s ease-in-out;
-  background-color: #ad4830;
 }
 
 #add-btn:hover {
   transform: scale(1.2);
 }
+
+#header {
+  padding: 10px 0px;
+  border-bottom: 3px black ridge;
+  background: rgb(70,28,18);
+  background: linear-gradient(90deg, 
+    rgba(70,28,18,1) 0%, 
+    rgba(173,72,48,1) 10%, 
+    rgba(230,97,68,1) 11%,
+    rgba(111,47,31,1) 18%, 
+    rgba(191,79,52,1) 26%, 
+    rgba(97,40,26,1) 34%, 
+    rgba(173,72,48,1) 37%, 
+    rgba(120,51,35,1) 41%, 
+    rgba(230, 97, 68,1) 49%,
+    rgba(173,72,48,1) 50%, 
+    rgba(98,41,28,1) 57%,
+    rgba(173,72,48,1) 67%,
+    rgba(136,56,37,1) 74%,
+    rgba(230,97,68,1) 81%, 
+    rgba(173,72,48,1) 81%, 
+    rgba(107,45,30,1) 85%, 
+    rgba(173,72,48,1) 91%, 
+    rgba(150,65,45,1) 94%, 
+    rgba(182,78,53,1) 97%);
+}
+
+#app-name {
+  font-family: 'Monoton', cursive;
+  font-size: 50px;
+  color: #94836d;
+  -webkit-text-stroke: 1px #fff4dd;
+}
+

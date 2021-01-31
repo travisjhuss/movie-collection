@@ -18,6 +18,8 @@ function App() {
     bottom: 20,
     left: 'auto',
     position: 'fixed',
+    backgroundColor: '#ad4830',
+    color: '#fff4dd'
   };
 
   const [open, setOpen] = useState(false);
@@ -32,8 +34,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppBar>
-        <h2>Travis's Movie DataBase!</h2>
+      <AppBar id="header">
+        <div id="app-name">the Travis Movie Database</div>
       </AppBar>
       <Router>
         <Route path="/" exact>
@@ -46,13 +48,13 @@ function App() {
         </Route>
 
         {/* Add Movie page in a popup */}
-        <Dialog 
+        <Dialog
           fullWidth
-          maxWidth="sm" 
-          open={open} 
+          maxWidth="sm"
+          open={open}
           onClose={handleClose}
         >
-          <AddMovie handleClose={handleClose}/>
+          <AddMovie handleClose={handleClose} />
         </Dialog>
 
         {/* floating button to open AddMovie */}
