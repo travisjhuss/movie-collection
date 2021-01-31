@@ -29,6 +29,10 @@ function AddMovie({ handleClose }) {
         backgroundColor: '#a0432c',
     }
 
+    const styleBorder = {
+        border: '#fff4dd'
+    }
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -88,6 +92,7 @@ function AddMovie({ handleClose }) {
                         label="Movie Title"
                         type="text"
                         variant="outlined"
+                        style={styleBorder}
                         onChange={(event) => setMovieTitle(event.target.value)}
                     />
                     <br />

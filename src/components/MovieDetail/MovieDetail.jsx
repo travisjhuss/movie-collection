@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Paper, Button } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import "./MovieDetail.css";
 
 function MovieDetail() {
 
@@ -19,15 +22,23 @@ function MovieDetail() {
     console.log('details from DB:', details);
     console.log('genres from DB:', genres);
     return (
-        <>
-        <h3>Title: {details.title}</h3>
-        <div>Genre: {genres.map((genres, i) => {
-            return(<p key={i}>{genres.genre}</p>)
-        })}
-        </div>
-        <p>{details.description}</p>
-        <button onClick={backToList}>Back to List</button>
-        </>
+        <Paper variant="outlined" id="details-container">
+            <div id="poster">
+                <img
+                    src={details.poster}
+                    width="185"
+                    height="272"
+                />
+            </div>
+            <div id="title">{details.title}</div>
+            <div id="genre">
+                {genres.map((genres, i) => {
+                    return (<span className="genre-tag" key={i}>{genres.genre}</span>)
+                })}
+            </div>
+            <div id="description">{details.description}</div>
+            <Button id="button" onClick={backToList}><ArrowBackIcon id="back-arrow" /></Button>
+        </Paper>
     )
 } // end MovieDetail
 
