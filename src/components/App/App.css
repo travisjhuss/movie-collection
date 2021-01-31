@@ -32,3 +32,11 @@
   position: fixed;
 };
 
+#add-btn {
+  transition: all .2s ease-in-out;
+  background-color: #ad4830;
+}
+
+#add-btn:hover {
+  transform: scale(1.2);
+}

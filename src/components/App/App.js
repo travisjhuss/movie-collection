@@ -56,7 +56,7 @@ function App() {
         </Dialog>
 
         {/* floating button to open AddMovie */}
-        <Fab color="primary" style={styleAddBtn} onClick={handleClickOpen}>
+        <Fab id="add-btn" color="primary" style={styleAddBtn} onClick={handleClickOpen}>
           <AddIcon />
         </Fab>
 

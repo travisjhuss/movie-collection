@@ -55,7 +55,9 @@ function AddMovie({handleClose}) {
             genre_ids: genreIds
         }
         console.log('movieToAdd:', movieToAdd);
-        dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
+        dispatch({type: 'ADD_MOVIE', payload: movieToAdd});
+        handleClose();
+        dispatch({ type: 'FETCH_MOVIES' });
     }
 
     console.log('genres from DB:', genres);
