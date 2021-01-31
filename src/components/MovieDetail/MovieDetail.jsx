@@ -1,10 +1,20 @@
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import { Paper, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import "./MovieDetail.css";
+import { useEffect } from "react";
+
 
 function MovieDetail() {
+
+    const dispatch = useDispatch();
+    const { id } = useParams();
+
+    useEffect(() => {
+        dispatch({type: 'FETCH_DETAILS', payload: id});
+        dispatch({type: 'FETCH_SELECTED_MOVIE_GENRES', payload: id});
+    }, []);
 
     const history = useHistory();
 
