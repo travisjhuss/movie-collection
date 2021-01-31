@@ -48,13 +48,13 @@ function App() {
         </Route>
 
         {/* Add Movie page in a popup */}
-        <Dialog 
+        <Dialog
           fullWidth
-          maxWidth="sm" 
-          open={open} 
+          maxWidth="sm"
+          open={open}
           onClose={handleClose}
         >
-          <AddMovie handleClose={handleClose}/>
+          <AddMovie handleClose={handleClose} />
         </Dialog>
 
         {/* floating button to open AddMovie */}

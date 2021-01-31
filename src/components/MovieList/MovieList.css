@@ -17,21 +17,3 @@
 #movie-paper:hover { 
     transform: scale(1.15); 
 }
-
-.hidden-title {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    color: white;
-    text-align: center;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px;
-    overflow: visible;
-    white-space: nowrap;
-}
-
-#movie-paper:hover .hidden-title {
-    visibility: visible;
-  }
