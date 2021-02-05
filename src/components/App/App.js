@@ -1,10 +1,13 @@
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList';
 import MovieDetail from '../MovieDetail/MovieDetail.jsx';
 import AddMovie from '../AddMovie/AddMovie';
+import Search from '../Search/Search';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';
 import { useState } from 'react';
@@ -34,12 +37,22 @@ function App() {
 
   return (
     <div className="App">
-      <AppBar id="header">
-        <div id="app-name">the Travis Movie Database</div>
-      </AppBar>
       <Router>
+        <AppBar id="header">
+          <div id="app-name">the Travis Movie Database
+        <Link to="/search">
+              <IconButton id="search-btn">
+                <SearchIcon />
+              </IconButton>
+            </Link>
+          </div>
+        </AppBar>
         <Route path="/" exact>
           <MovieList />
+        </Route>
+
+        <Route path="/search" exact>
+          <Search />
         </Route>
 
         {/* Details page */}
