@@ -11,6 +11,20 @@ import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';
 import { useState } from 'react';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#fff4dd'
+    },
+    secondary: {
+      main: '#ad4830'
+    }
+  }
+})
+
 
 function App() {
   // style to position add button
@@ -37,45 +51,47 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <AppBar id="header">
-          <div id="app-name">the Travis Movie Database
+      <ThemeProvider theme={theme}>
+        <Router>
+          <AppBar id="header">
+            <div id="app-name">the Travis Movie Database
         <Link to="/search">
-              <IconButton id="search-btn">
-                <SearchIcon />
-              </IconButton>
-            </Link>
-          </div>
-        </AppBar>
-        <Route path="/" exact>
-          <MovieList />
-        </Route>
+                <IconButton id="search-btn">
+                  <SearchIcon />
+                </IconButton>
+              </Link>
+            </div>
+          </AppBar>
+          <Route path="/" exact>
+            <MovieList />
+          </Route>
 
-        <Route path="/search" exact>
-          <Search />
-        </Route>
+          <Route path="/search" exact>
+            <Search />
+          </Route>
 
-        {/* Details page */}
-        <Route path="/details/:id" exact>
-          <MovieDetail />
-        </Route>
+          {/* Details page */}
+          <Route path="/details/:id" exact>
+            <MovieDetail />
+          </Route>
 
-        {/* Add Movie page in a popup */}
-        <Dialog
-          fullWidth
-          maxWidth="sm"
-          open={open}
-          onClose={handleClose}
-        >
-          <AddMovie handleClose={handleClose} />
-        </Dialog>
+          {/* Add Movie page in a popup */}
+          <Dialog
+            fullWidth
+            maxWidth="sm"
+            open={open}
+            onClose={handleClose}
+          >
+            <AddMovie handleClose={handleClose} />
+          </Dialog>
 
-        {/* floating button to open AddMovie */}
-        <Fab id="add-btn" color="primary" style={styleAddBtn} onClick={handleClickOpen}>
-          <AddIcon />
-        </Fab>
+          {/* floating button to open AddMovie */}
+          <Fab id="add-btn" color="primary" style={styleAddBtn} onClick={handleClickOpen}>
+            <AddIcon />
+          </Fab>
 
-      </Router>
+        </Router>
+      </ThemeProvider>
     </div>
   );
 }
