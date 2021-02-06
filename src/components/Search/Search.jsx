@@ -1,7 +1,7 @@
 import { TextField, makeStyles, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Search.css';
 
@@ -25,13 +25,16 @@ function Search() {
     const classes = useStyles();
 
     const dispatch = useDispatch();
+    const searchResults = useSelector(store => store.searchResults);
 
     const [searchText, setSearchText] = useState('');
 
     const handleSearch = () => {
         console.log('clicked search,', searchText);
+        dispatch({type: 'FETCH_SEARCH_RESULTS', payload: searchText});
     }
 
+    console.log('searchResults in React:', searchResults);
     return (
         <div id="search-field">
             <TextField
