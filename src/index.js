@@ -17,8 +17,22 @@ function* rootSaga() {
     yield takeEvery('FETCH_DETAILS', fetchMovieDetails);
     yield takeEvery('FETCH_SELECTED_MOVIE_GENRES', fetchSelectedMovieGenres);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
-    yield takeEvery('ADD_MOVIE', postNewMovie)
+    yield takeEvery('ADD_MOVIE', postNewMovie);
+    yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
 }
+
+function* fetchSearchResults(action) {
+    try {
+        console.log('fetchSearchResults triggered', action.payload);
+        const response = yield axios.get(`/api/search?q=${action.payload}`);
+        // console.log('search:', response.data);
+        yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
+
+    } catch(err) {
+        console.log('search results error', err);
+    }
+}
+
 
 function* fetchAllMovies() {
     // get all movies from the DB
@@ -124,13 +138,23 @@ const selectedMovieGenres = (state = [], action) => {
     }
 }
 
+const searchResults = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_SEARCH_RESULTS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
         details,
-        selectedMovieGenres
+        selectedMovieGenres,
+        searchResults
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

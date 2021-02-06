@@ -75,3 +75,10 @@
   -webkit-text-stroke: 1px #fff4dd;
 }
 
+#search-btn {
+  color: #fff4dd;
+  position: absolute;
+  margin-left: 50px;
+  margin-top: 15px;
+}
+

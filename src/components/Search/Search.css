@@ -1,0 +1,21 @@
+#search-field {
+    margin-top: 120px;
+    /* color: #fff4dd; */
+}
+
+#search-text {
+    color: #a0432c;
+    background-color: #fff4dd;
+    border:  #a0432c 4px solid;
+    border-radius: 6px;
+    width: 300px;
+}
+
+#search-submit {
+    color: #fff4dd;
+    padding: 18px 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    margin-left: 5px;
+}
+

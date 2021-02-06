@@ -10,20 +10,34 @@ import InputLabel from '@material-ui/core/InputLabel';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import  { makeStyles } from '@material-ui/core';
 import './AddMovie.css';
 
-function AddMovie({ handleClose }) {
-    // Custom theme for form
-    const theme = createMuiTheme({
-        palette: {
-            primary: {
-                main: '#fff4dd'
-            }
+const useStyles = makeStyles({
+    root: {
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#fff4dd',
+        },
+        '&:hover fieldset': {
+            border: '2px solid #fff4dd'
+          }
+    }},
+    select: {
+        '&:before': {
+            borderColor: '#fff4dd',
+        },
+        '&:after': {
+            borderColor: '#fff4dd',
         }
-    })
+    },
+})
+
+function AddMovie({ handleClose }) {
+
+    const classes = useStyles();
+    
     // style to change background color 
     const styleForm = {
         backgroundColor: '#a0432c',
@@ -78,12 +92,13 @@ function AddMovie({ handleClose }) {
     // console.log('genreNames:', genreNames);
     return (
         <div style={styleForm}>
-            <ThemeProvider theme={theme}>
                 <DialogTitle>
                     <div id="form-head">Add Movie...</div>
                 </DialogTitle>
                 <DialogContent>
                     <TextField
+                        className={classes.root}
+                        color='primary'
                         margin="dense"
                         id="title-input"
                         label="Movie Title"
@@ -93,6 +108,8 @@ function AddMovie({ handleClose }) {
                     />
                     <br />
                     <TextField
+                        className={classes.root}
+                        color='primary'
                         margin="dense"
                         id="poster-url-input"
                         label="Movie Poster URL"
@@ -102,6 +119,8 @@ function AddMovie({ handleClose }) {
                     />
                     <br />
                     <TextField
+                        className={classes.root}
+                        color='primary'
                         margin="dense"
                         id="description-input"
                         label="Description"
@@ -116,6 +135,8 @@ function AddMovie({ handleClose }) {
                     <InputLabel id="genre-checkbox-label">Genres</InputLabel>
                     {/* Dropdown borrowed from Material UI's website */}
                     <Select
+                        className={classes.select}
+                        color='primary'
                         labelId="genre-checkbox-label"
                         id="genre-checkbox-input"
                         variant="outlined"
@@ -141,7 +162,6 @@ function AddMovie({ handleClose }) {
                         Save
             </Button>
                 </DialogActions>
-            </ThemeProvider>
         </div>
     );
 } // end AddMovie
