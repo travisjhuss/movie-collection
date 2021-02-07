@@ -79,6 +79,12 @@
   color: #fff4dd;
   position: absolute;
   margin-left: 50px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
+#home-btn {
+  color: #fff4dd;
+  position: absolute;
+  margin-left: 50px;
+  margin-top: -7px;
+}

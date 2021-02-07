@@ -25,8 +25,9 @@ function MovieDetail() {
 
     // function to return to list component
     const backToList = () => {
-        // console.log('clicked back button');
-        history.push('/');
+        // go back to either search or movie list
+        history.goBack();
+
     }
 
     // console.log('details from DB:', details);

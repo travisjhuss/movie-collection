@@ -13,6 +13,7 @@ function MovieList() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({type: 'CLEAR_SEARCH'});
     }, []);
 
     // when image clicked
