@@ -101,6 +101,7 @@ function* postNewMovie(action) {
         const newMovie = action.payload;
         console.log("newMovie", newMovie);
         yield axios.post("/api/movie", { newMovie });
+        yield put({ type: 'FETCH_MOVIES'});
       } catch (err) {
         console.log(`error in post new movie ${err}`);
       }
