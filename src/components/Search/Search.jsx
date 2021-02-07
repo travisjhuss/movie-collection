@@ -2,7 +2,7 @@ import { TextField, makeStyles, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import SearchResults from '../SearchResults/SearchResults';
 import './Search.css';
 
 const useStyles = makeStyles({
@@ -54,6 +54,7 @@ function Search() {
             >
                 Search
             </Button>
+            <SearchResults searchResults={searchResults} />
         </div>
     )
 }
