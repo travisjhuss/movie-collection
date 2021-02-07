@@ -19,6 +19,16 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('ADD_MOVIE', postNewMovie);
     yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
+    yield takeEvery('CLEAR_SEARCH', clearSearch);
+}
+
+function* clearSearch() {
+    try {
+        console.log('clearSearch triggered');
+        yield put({ type: 'EMPTY_SEARCH' });
+    } catch(err) {
+        console.log('search results error', err);
+    }
 }
 
 function* fetchSearchResults(action) {
@@ -142,6 +152,9 @@ const searchResults = (state = [], action) => {
     switch (action.type) {
         case 'SET_SEARCH_RESULTS':
             return action.payload;
+        case 'EMPTY_SEARCH':
+            state = [];
+            return state;
         default:
             return state;
     }

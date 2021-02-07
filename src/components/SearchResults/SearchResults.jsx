@@ -1,31 +1,20 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import './SearchResults.css';
 import Paper from '@material-ui/core/Paper';
-import './MovieList.css';
+import { useHistory } from 'react-router-dom';
 
-
-function MovieList() {
+function SearchResults({searchResults}) {
 
     const history = useHistory();
-    const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
-        dispatch({type: 'CLEAR_SEARCH'});
-    }, []);
-
-    // when image clicked
-    const handleClick = (id) => {
+     // when image clicked
+     const handleClick = (id) => {
         // console.log('image clicked on ID:', id);
         history.push(`/details/${id}`);
     } // end handleClick
 
-    return (
-        <main>
-            <section className="movies">
-                {movies.map(movie => {
+    return(
+        <section className="movies">
+                {searchResults.map(movie => {
                     return (
                         <Paper key={movie.id} elevation={6} id="movie-paper">
                             <img 
@@ -38,9 +27,7 @@ function MovieList() {
                     );
                 })}
             </section>
-        </main>
-
-    );
+    )
 }
 
-export default MovieList;
+export default SearchResults;

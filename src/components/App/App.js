@@ -8,11 +8,13 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
 import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';
 import { useState } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { useDispatch } from "react-redux";
 
 const theme = createMuiTheme({
   palette: {
@@ -49,15 +51,22 @@ function App() {
     setOpen(false);
   };
 
+  const dispatch = useDispatch;
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Router>
           <AppBar id="header">
             <div id="app-name">the Travis Movie Database
-        <Link to="/search">
+              <Link to="/search">
                 <IconButton id="search-btn">
                   <SearchIcon />
+                </IconButton>
+              </Link>
+              <Link to="/" >
+                <IconButton id="home-btn">
+                  <HomeIcon />
                 </IconButton>
               </Link>
             </div>
