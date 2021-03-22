@@ -29,9 +29,12 @@ function Search() {
 
     const [searchText, setSearchText] = useState('');
 
+    const [isThereSearch, setIsThereSearch] = useState(false);
+
     const handleSearch = () => {
         console.log('clicked search,', searchText);
-        dispatch({type: 'FETCH_SEARCH_RESULTS', payload: searchText});
+        dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: searchText });
+        setIsThereSearch(true);
     }
 
     console.log('searchResults in React:', searchResults);
@@ -54,6 +57,7 @@ function Search() {
             >
                 Search
             </Button>
+            {isThereSearch ? <h4>Search Results</h4> : null}
             <SearchResults searchResults={searchResults} />
         </div>
     )
