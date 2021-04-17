@@ -13,10 +13,10 @@ Building this app also allowed me to get more familiar with Material UI and cust
 ## Screen Shot
 
 ### Home Page:
-![home](public/images/movie-screen1.png)
+![home](public/images/movie-screen-1.png)
 
 ### Add Movie:
-![add](public/images/movie-screen2.png)
+![add](public/images/movie-screen-2.png)
 
 ### Search
 ![search](public/images/movie_screen3.png)
