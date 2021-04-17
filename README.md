@@ -10,6 +10,17 @@ TMDb is a simple movie organization app built using React, Redux, and Material U
 
 Building this app also allowed me to get more familiar with Material UI and customizing their built in styles. 
 
+## Screen Shot
+
+### Home Page:
+![home](public/images/movie-screen1.png)
+
+### Add Movie:
+![add](public/images/movie-screen2.png)
+
+### Search
+![search](public/images/movie_screen3.png)
+
 ### Prerequisites
 
 Link to software that is required to install the app (e.g. node).
